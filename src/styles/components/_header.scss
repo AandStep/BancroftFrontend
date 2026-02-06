@@ -1,0 +1,155 @@
+@use "../functions" as *;
+@use "../mixins" as *;
+.header {
+  width: 100%;
+  // padding: 50px 0 0 0; // Keeping user's change or resetting?
+  // User added padding: 50px 0 0 0; in previous turn manually. I will respect that but use rem/fluid if appropriate.
+  // Actually, let's keep it consistent with design. If design has padding, we keep it.
+  // User wrote: padding: 50px 0 0 0;
+  padding: rem(50) 0 0 0;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    // Height: 64px to 80px (Desktop)
+    height: fluid-dt(64, 80);
+
+    @media (max-width: 1024px) {
+      // Height: 56px to 64px (Mobile/Tablet)
+      height: fluid-tm(56, 64);
+    }
+  }
+
+  // Left: Phone
+  &__phone {
+    @include text-regular;
+    // User changed this to regular in last edit?
+    // Wait, user changed it TO var(--regular-font-family) in the diff provided in Step 144.
+    // "font-family: var(--regular-font-family);"
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    white-space: nowrap;
+
+    // Font size: 16px -> 18px (Desktop)
+    font-size: fluid-dt(16, 18);
+
+    @media (max-width: 1024px) {
+      // Font size: 14px -> 16px (Mobile)
+      font-size: fluid-tm(14, 16);
+
+      // Keep visible as per draft, or hide if requested? Assuming visible.
+    }
+  }
+
+  // Center: Logo
+  &__logo-link {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__logo {
+    height: rem(80); // Fixed 80px as per user edit
+    object-fit: contain;
+  }
+
+  // Right: Actions (Search, Cart)
+  &__actions {
+    display: flex;
+    align-items: center;
+    // Gap: 16px -> 24px (Desktop)
+    gap: fluid-dt(16, 24);
+
+    @media (max-width: 1024px) {
+      // Gap: 8px -> 16px (Mobile)
+      gap: fluid-tm(8, 16);
+    }
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.6);
+    @include text-regular;
+
+    // Hover state
+    transition:
+      opacity 0.3s ease,
+      color 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+      color: #000;
+    }
+
+    &--search {
+      width: rem(304); // Fixed width from user edit
+      background-color: #f9f9f9;
+      border-radius: rem(5);
+
+      // Padding: top/bottom 8px->12px? Let's approximate from original clamp
+      // Original: clamp(0.5rem, 0.4rem + 0.08vw, 0.75rem) -> 8px to 12px
+      padding: fluid-dt(8, 12) fluid-dt(12, 16);
+
+      gap: rem(10);
+
+      @media (max-width: 768px) {
+        background-color: transparent;
+        padding: 0;
+        width: auto; // User edit
+      }
+    }
+
+    &--cart {
+      padding: 0;
+    }
+  }
+
+  &__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: rem(32);
+      height: rem(32);
+      flex-shrink: 0;
+      aspect-ratio: 1/1;
+
+      path {
+        fill: currentColor;
+      }
+    }
+
+    g {
+      opacity: 1;
+    }
+  }
+
+  &__btn-text {
+    // 16px -> 18px
+    font-size: fluid-dt(16, 18);
+    // line-height is handled by parent or mixin if needed, but here we override size
+    // However, mixin sets line-height. Let's make sure we rely on mixin as base,
+    // but here in original code it was using var(--regular-line-height) which is in mixin.
+    // Since we applied @include text-regular to parent (.header__btn > .header__btn-text inherits?),
+    // wait. .header__btn only had font-family before. Now it has full mixin.
+    // .header__btn-text had specific font-size and line-height.
+    // Let's apply mixin here too to be safe/explicit or just let it cascade?
+    // BEM says elements are independent.
+    @include text-regular;
+    font-size: fluid-dt(16, 18);
+    white-space: nowrap;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+}

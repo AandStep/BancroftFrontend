@@ -1,0 +1,56 @@
+:root {
+  --regular-font-family: "Montserrat", Helvetica;
+  --regular-font-weight: 400;
+  --regular-font-size: 18px;
+  --regular-letter-spacing: 0px;
+  --regular-line-height: 139.9999976158142%;
+  --regular-font-style: normal;
+  --regular-sm-up-font-family: "Montserrat", Helvetica;
+  --regular-sm-up-font-weight: 500;
+  --regular-sm-up-font-size: 16px;
+  --regular-sm-up-letter-spacing: 0.32px;
+  --regular-sm-up-line-height: 139.9999976158142%;
+  --regular-sm-up-font-style: normal;
+  --regular-sm-font-family: "Montserrat", Helvetica;
+  --regular-sm-font-weight: 500;
+  --regular-sm-font-size: 16px;
+  --regular-sm-letter-spacing: 0.32px;
+  --regular-sm-line-height: 139.9999976158142%;
+  --regular-sm-font-style: normal;
+  --h1-ec-font-family: "Benzin-Bold", Helvetica;
+  --h1-ec-font-weight: 400;
+  --h1-ec-font-size: 72px;
+  --h1-ec-letter-spacing: 0px;
+  --h1-ec-line-height: 110.00000238418579%;
+  --h1-ec-font-style: normal;
+  --subtitle-font-family: "Montserrat", Helvetica;
+  --subtitle-font-weight: 500;
+  --subtitle-font-size: 24px;
+  --subtitle-letter-spacing: 0px;
+  --subtitle-line-height: 120.00000476837158%;
+  --subtitle-font-style: normal;
+  --title-font-family: "Montserrat", Helvetica;
+  --title-font-weight: 700;
+  --title-font-size: 36px;
+  --title-letter-spacing: 0px;
+  --title-line-height: 120.00000476837158%;
+  --title-font-style: normal;
+  --subtitle-up-font-family: "Montserrat", Helvetica;
+  --subtitle-up-font-weight: 500;
+  --subtitle-up-font-size: 24px;
+  --subtitle-up-letter-spacing: 0px;
+  --subtitle-up-line-height: normal;
+  --subtitle-up-font-style: normal;
+  --elements-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.05);
+  --base-colors-second-color: rgba(172, 80, 0, 1);
+  --base-colors-main-color: rgba(210, 128, 69, 1);
+
+  /* Mapped from requested button styles to easy access variables if needed, 
+       though prompt specifically used vars like --Main-color so I should probably verify those.
+       The prompt says: "background: var(--Main-color, #D28045);"
+       So I should define --Main-color.
+    */
+  --Main-color: #d28045;
+  --Main-color-25: rgba(210, 128, 69, 0.25);
+  --Second-color: #ac5000;
+}

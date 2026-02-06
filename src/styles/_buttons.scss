@@ -1,0 +1,92 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.btn {
+  // Layout Default (Big)
+  display: inline-flex;
+  padding: 1.75rem 3rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  // Typography
+  @include text-button;
+  text-decoration: none;
+
+  // Normal State
+  border-radius: 0.3125rem;
+  background: var(--Main-color, #d28045);
+  color: #fff;
+  border: 3px solid transparent; // To avoid layout shift on hover
+
+  &:disabled,
+  &.disabled {
+    border-radius: 0.3125rem;
+    opacity: 0.5;
+    background: var(--Main-color, #d28045);
+    color: #fff;
+    pointer-events: none;
+    border-color: transparent;
+  }
+
+  &:hover {
+    border-radius: 0.3125rem;
+    border: 3px solid var(--Main-color, #d28045);
+    background: rgba(255, 255, 255, 0.01);
+    color: var(--Main-color, #d28045);
+  }
+
+  &:active {
+    border-radius: 0.3125rem;
+    border: 3px solid var(--Main-color, #d28045);
+    background: rgba(255, 255, 255, 0.01);
+    box-shadow: 4px 4px 18px 0 var(--Main-color-25, rgba(210, 128, 69, 0.25))
+      inset;
+    color: var(--Main-color, #d28045);
+    text-shadow: 0 0 8px #d28045;
+  }
+
+  // Small Button (Modification)
+  &--sm {
+    padding: 1.125rem 2.375rem;
+    // Same colors as default
+  }
+
+  // Alt Button (Modification)
+  &--alt {
+    // Normal
+    border-radius: 0.3125rem;
+    border: 3px solid var(--Second-color, #ac5000);
+    background: rgba(255, 255, 255, 0.01);
+    color: var(--Second-color, #ac5000);
+
+    &:disabled,
+    &.disabled {
+      border-radius: 0.3125rem;
+      border: 3px solid var(--Second-color, #ac5000);
+      opacity: 0.5;
+      background: rgba(255, 255, 255, 0.01);
+      color: var(--Second-color, #ac5000);
+      pointer-events: none;
+    }
+
+    &:hover {
+      border: 3px solid #ac500000;
+      border-radius: 0.3125rem;
+      background: var(--Second-color, #ac5000);
+      color: #fff;
+    }
+
+    &:active {
+      border: 3px solid #ac500000;
+      border-radius: 0.3125rem;
+      background: var(--Second-color, #ac5000);
+      box-shadow: 4px 4px 18px 0 rgba(255, 255, 255, 0.5) inset;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.25);
+    }
+  }
+}

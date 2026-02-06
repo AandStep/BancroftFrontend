@@ -1,0 +1,19 @@
+@use "functions" as *;
+@use "fonts";
+@use "variables";
+@use "mixins";
+@use "buttons";
+@use "reset";
+@use "components/container";
+@use "components/header";
+@use "components/hero";
+
+main {
+  display: flex;
+  padding-top: rem(50); // 3.125rem * 16 = 50px
+  flex-direction: column;
+  align-items: center;
+  gap: rem(32); // 2rem * 16 = 32px
+  align-self: stretch;
+  width: 100%;
+}

@@ -1,0 +1,207 @@
+@use "../functions" as *;
+@use "../mixins" as *;
+
+.hero {
+  width: 100%;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: fluid-dt(24, 32);
+    width: 100%;
+
+    @media (max-width: 1024px) {
+      gap: fluid-tm(16, 24);
+    }
+  }
+
+  // Grouping Top Elements (Nav + Breadcrumbs)
+  &__category-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: fluid-dt(12, 16);
+    width: 100%;
+  }
+
+  // 1. Navbar (Horizontal Categories)
+  &__navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #f9f9f9;
+    border-radius: rem(5);
+    padding: fluid-dt(16, 24) fluid-dt(24, 32);
+
+    @media (max-width: 768px) {
+      // Allow scrolling on mobile if items don't fit
+      overflow-x: auto;
+      gap: rem(32);
+      padding: fluid-tm(16, 24);
+
+      // Hide scrollbar
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      scrollbar-width: none;
+    }
+  }
+
+  &__nav-link {
+    @include text-regular-sm-up;
+    color: rgba(0, 0, 0, 0.6);
+    text-decoration: none;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--main-color);
+    }
+  }
+
+  // 2. Breadcrumbs
+  &__breadcrumbs {
+    display: inline-flex;
+    align-items: center;
+    gap: rem(32);
+    opacity: 0.6;
+    padding-left: 0; // Reset just in case
+
+    // Per design it might need left padding alignment if visually offset,
+    // but draft shows aligned left.
+  }
+
+  &__crumb {
+    @include text-regular-sm;
+    color: #000;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  &__crumb-separator {
+    width: rem(5);
+    height: rem(5);
+    background-color: #000;
+    border-radius: 50%;
+  }
+
+  // 3. Hero Banner
+  &__banner {
+    display: flex;
+    position: relative;
+    width: 100%;
+    background-color: #f9f9f9;
+    border-radius: rem(5);
+    overflow: hidden;
+    height: rem(600); // Fixed height on desktop as per draft css
+
+    // Layout inside banner
+    padding: fluid-dt(24, 32);
+    align-items: center; // Vertical center content
+
+    @media (max-width: 1024px) {
+      height: auto; // Flexible height on tablet/mobile
+      flex-direction: column-reverse; // Content below, or above?
+      // Usually text is above image in mobile.
+      // Let's assume text top, image bottom.
+      flex-direction: column;
+      align-items: flex-start;
+      gap: rem(32);
+      padding: fluid-tm(24, 32) 0 0 fluid-tm(24, 32);
+    }
+  }
+
+  &__banner-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    max-width: rem(1000); // Limit text width to not overlap image too much
+    z-index: 2;
+    flex: 1;
+
+    @media (max-width: 1024px) {
+      gap: rem(24);
+    }
+
+    // If we want the split logic:
+    // "slider-cta" in draft had 'justify-content: space-between'
+    // It contains "slider-txt" (top) and "btn-base" (bottom/center?)
+  }
+
+  &__text-group {
+    display: flex;
+    flex-direction: column;
+    gap: rem(8);
+  }
+
+  &__title {
+    text-wrap: balance;
+    @include text-h1-ec;
+    // 72px is design var, but might need fluid scaling
+    font-size: fluid-dt(40, 72);
+    color: rgba(0, 0, 0, 0.8);
+    text-transform: uppercase;
+
+    span {
+      display: block; // Force break if needed or handle <br>
+    }
+
+    @media (max-width: 1024px) {
+      font-size: fluid-tm(24, 72);
+    }
+  }
+
+  &__description {
+    @include text-subtitle;
+    color: rgba(0, 0, 0, 0.6);
+
+    @media (max-width: 768px) {
+      font-size: fluid-tm(16, 20);
+    }
+  }
+
+  // &__cta-wrapper {
+  //   // Aligns button naturally flows with gap
+  // }
+
+  // &__cta {
+  //    // Inherits .btn styles from _buttons.scss
+  //    // No extra overrides needed if .btn handles it.
+  //    // Draft had "btn-base" div wrapper, but our HTML uses <a> with .btn class.
+  // }
+
+  &__image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    // User request:
+    max-width: rem(571); // 571px
+    width: 100%;
+    object-fit: cover;
+    object-position: top right; // "кропалась к верху" => top alignment
+    z-index: 10;
+
+    // Use query to switch to relative functionality on mobile?
+    @media (max-width: 1024px) {
+      max-width: unset;
+      position: relative;
+      width: 80%;
+      margin-left: auto;
+      height: 571px;
+      max-height: rem(400);
+      right: auto;
+      top: auto;
+      border-radius: rem(5);
+    }
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+}
