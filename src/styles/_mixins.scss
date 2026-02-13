@@ -1,72 +1,105 @@
 @use "variables" as *;
+@use "functions" as *;
 
 @mixin text-regular {
   font-family: var(--regular-font-family);
   font-weight: var(--regular-font-weight);
-  font-size: var(--regular-font-size);
   letter-spacing: var(--regular-letter-spacing);
   line-height: var(--regular-line-height);
   font-style: var(--regular-font-style);
+  font-size: fluid-dt(16, 18);
+
+  @media (max-width: 1024px) {
+    font-size: fluid-tm(14, 16);
+  }
 }
 
 @mixin text-regular-sm-up {
   font-family: var(--regular-sm-up-font-family);
   font-weight: var(--regular-sm-up-font-weight);
-  font-size: var(--regular-sm-up-font-size);
   letter-spacing: var(--regular-sm-up-letter-spacing);
   line-height: var(--regular-sm-up-line-height);
   font-style: var(--regular-sm-up-font-style);
+  font-size: fluid-dt(14, 16);
+
+  @media (max-width: 1024px) {
+    font-size: fluid-tm(12, 14);
+  }
 }
 
 @mixin text-regular-sm {
   font-family: var(--regular-sm-font-family);
   font-weight: var(--regular-sm-font-weight);
-  font-size: var(--regular-sm-font-size);
   letter-spacing: var(--regular-sm-letter-spacing);
   line-height: var(--regular-sm-line-height);
   font-style: var(--regular-sm-font-style);
+  font-size: fluid-dt(14, 16);
+
+  @media (max-width: 1024px) {
+    font-size: fluid-tm(12, 14);
+  }
 }
 
 @mixin text-h1-ec {
   font-family: var(--h1-ec-font-family);
   font-weight: var(--h1-ec-font-weight);
-  font-size: var(--h1-ec-font-size);
   letter-spacing: var(--h1-ec-letter-spacing);
   line-height: var(--h1-ec-line-height);
   font-style: var(--h1-ec-font-style);
+  text-transform: uppercase;
+  font-size: fluid-dt(40, 72);
+  @media (max-width: 1024px) {
+    font-size: fluid-tm(24, 40);
+  }
 }
 
 @mixin text-subtitle {
   font-family: var(--subtitle-font-family);
   font-weight: var(--subtitle-font-weight);
-  font-size: var(--subtitle-font-size);
   letter-spacing: var(--subtitle-letter-spacing);
   line-height: var(--subtitle-line-height);
   font-style: var(--subtitle-font-style);
+  font-size: fluid-dt(20, 24);
+
+  @media (max-width: 1024px) {
+    font-size: fluid-tm(16, 20);
+  }
 }
 
 @mixin text-title {
   font-family: var(--title-font-family);
   font-weight: var(--title-font-weight);
-  font-size: var(--title-font-size);
   letter-spacing: var(--title-letter-spacing);
   line-height: var(--title-line-height);
   font-style: var(--title-font-style);
+  font-size: fluid(24, 36);
 }
 
 @mixin text-subtitle-up {
   font-family: var(--subtitle-up-font-family);
   font-weight: var(--subtitle-up-font-weight);
-  font-size: var(--subtitle-up-font-size);
   letter-spacing: var(--subtitle-up-letter-spacing);
   line-height: var(--subtitle-up-line-height);
   font-style: var(--subtitle-up-font-style);
+  font-size: fluid-dt(20, 24);
+
+  @media (max-width: 1024px) {
+    font-size: fluid-tm(16, 20);
+  }
 }
 
 @mixin text-button {
   font-family: var(--regular-font-family);
   font-weight: var(--title-font-weight);
-  font-size: var(--regular-font-size);
   font-style: var(--regular-font-style);
   line-height: normal;
+  font-size: fluid-dt(16, 18);
+
+  @media (max-width: 1024px) {
+    font-size: fluid-tm(14, 16);
+  }
+}
+
+@mixin btn-sm {
+  padding: 1.125rem 2.375rem;
 }

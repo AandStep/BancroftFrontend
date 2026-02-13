@@ -110,7 +110,11 @@
       flex-direction: column;
       align-items: flex-start;
       gap: rem(32);
-      padding: fluid-tm(24, 32) 0 0 fluid-tm(24, 32);
+      padding: fluid-tm(16, 32) 0 0 fluid-tm(16, 32);
+    }
+
+    @media (max-width: 768px) {
+      padding: 0;
     }
   }
 
@@ -128,9 +132,9 @@
       gap: rem(24);
     }
 
-    // If we want the split logic:
-    // "slider-cta" in draft had 'justify-content: space-between'
-    // It contains "slider-txt" (top) and "btn-base" (bottom/center?)
+    @media (max-width: 768px) {
+      padding: 8px;
+    }
   }
 
   &__text-group {
@@ -142,27 +146,18 @@
   &__title {
     text-wrap: balance;
     @include text-h1-ec;
-    // 72px is design var, but might need fluid scaling
-    font-size: fluid-dt(40, 72);
+
     color: rgba(0, 0, 0, 0.8);
     text-transform: uppercase;
 
     span {
       display: block; // Force break if needed or handle <br>
     }
-
-    @media (max-width: 1024px) {
-      font-size: fluid-tm(24, 72);
-    }
   }
 
   &__description {
     @include text-subtitle;
     color: rgba(0, 0, 0, 0.6);
-
-    @media (max-width: 768px) {
-      font-size: fluid-tm(16, 20);
-    }
   }
 
   // &__cta-wrapper {

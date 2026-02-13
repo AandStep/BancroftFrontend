@@ -1,0 +1,100 @@
+@use "../functions" as *;
+@use "../mixins" as *;
+
+.banner {
+  // Section wrapper - layout only
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  height: fluid(430, 570);
+
+  &__container {
+    // Inherits .container max-width (1436px)
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    // Ensure it takes full available height if needed, though min-height is on content
+  }
+
+  &__content {
+    height: 100%;
+    width: 100%;
+    background-image: url("/src/img/promo-img.webp");
+    background-size: cover;
+    background-position: top left;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end; // Right aligned content
+
+    border-radius: 5px;
+
+    padding: fluid(16, 32);
+    // Adjusted padding to match "promo-wrapper" feel (32px padding in desktop source)
+
+    position: relative;
+    z-index: 1;
+
+    // Optional overlay inside if needed for readability logic
+  }
+
+  &__text-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: fluid(4, 8);
+    text-align: right;
+  }
+
+  &__title {
+    @include text-h1-ec;
+    color: rgba(0, 0, 0, 0.8);
+    margin: 0;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: rem(6) rem(12);
+    border: 1px solid #000000;
+    border-radius: rem(4);
+  }
+
+  &__badge-text {
+    @include text-regular-sm;
+    color: #000000;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: fluid(20, 28) fluid(32, 48);
+    background-color: var(--base-colors-main-color);
+    border-radius: rem(5);
+    transition:
+      transform 0.3s ease,
+      background-color 0.3s ease;
+    text-decoration: none;
+
+    @include text-button;
+    color: #ffffff;
+
+    &:hover {
+      background-color: var(--base-colors-second-color);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+  }
+}

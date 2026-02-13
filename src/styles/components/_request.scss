@@ -1,0 +1,196 @@
+@use "../functions" as *;
+@use "../mixins" as *;
+@use "../variables" as *;
+
+.request {
+  background-color: var(--white-color, #ffffff);
+  padding: fluid-dt(40, 60) 0;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: fluid-dt(40, 72);
+    align-items: flex-start;
+    width: 100%;
+
+    @media (max-width: 1024px) {
+      gap: fluid-tm(32, 40);
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: fluid-dt(4, 8);
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  &__title {
+    font-family: var(--h1-ec-font-family);
+    font-weight: var(--h1-ec-font-weight);
+    letter-spacing: var(--h1-ec-letter-spacing);
+    line-height: var(--h1-ec-line-height);
+    font-style: var(--h1-ec-font-style);
+    text-transform: uppercase;
+    font-size: fluid-dt(40, 72);
+
+    @media (max-width: 1024px) {
+      font-size: fluid-tm(24, 40);
+    }
+
+    color: #000000;
+    margin: 0;
+  }
+
+  &__subtitle {
+    @include text-regular;
+    color: #000000;
+    margin: 0;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: fluid-dt(12, 18);
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: rem(8);
+    width: 100%;
+  }
+
+  &__label {
+    display: flex;
+    flex-direction: column;
+    gap: rem(8);
+    width: 100%;
+    cursor: pointer;
+  }
+
+  &__label-text {
+    @include text-regular;
+    color: #000000;
+  }
+
+  &__asterisk {
+    color: #ff0000;
+  }
+
+  &__input {
+    width: 100%;
+    padding: rem(28);
+    border-radius: rem(5);
+    border: 1px solid #000000;
+    background: none;
+
+    @include text-regular;
+    color: #000000;
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--base-colors-main-color);
+    }
+
+    &.is-invalid {
+      border-color: #ff0000;
+    }
+  }
+
+  &__checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: rem(10);
+    padding: rem(8) 0;
+    width: 100%;
+  }
+
+  &__checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: rem(10);
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+  }
+
+  &__checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  // Custom checkbox styling based on :checked state of sibling
+  &__checkbox:checked + &__custom-checkbox {
+    background-color: #000000;
+    border-color: #000000;
+
+    &::after {
+      display: block;
+    }
+  }
+
+  &__checkbox.is-invalid + &__custom-checkbox {
+    border-color: #ff0000;
+  }
+
+  &__custom-checkbox {
+    display: inline-block;
+    position: relative;
+    height: rem(24);
+    width: rem(24);
+    min-width: rem(24);
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: rem(6);
+    transition: all 0.2s ease;
+
+    &::after {
+      content: "";
+      position: absolute;
+      display: none;
+      left: 50%;
+      top: 45%;
+      width: rem(6);
+      height: rem(12);
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+  }
+
+  &__agreement-text {
+    @include text-regular;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: fluid-dt(
+      14,
+      16
+    ); // Slightly smaller based on Desctop.html text wrapper
+
+    @media (max-width: 1024px) {
+      font-size: fluid-tm(12, 14);
+    }
+  }
+
+  &__btn {
+    width: 100%;
+    // All other styles are inherited from .btn class defined in _buttons.scss
+  }
+}

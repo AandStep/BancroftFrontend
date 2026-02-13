@@ -1,0 +1,135 @@
+@use "../mixins" as *;
+@use "../functions" as *;
+
+.faq {
+  width: 100%;
+  position: relative;
+  /* User requested "same level" as reference. 
+     Reference uses sticky positioning "magic effect", but here we keep it standard 
+     unless strictly required for the specific page layout. */
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: fluid(24, 32);
+  }
+
+  &__title {
+    @include text-title;
+    color: #000000;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; // Reference has 18px -> ~1.2rem
+    width: 100%;
+
+    @media (max-width: 1024px) {
+      gap: 12px;
+    }
+  }
+
+  &__item {
+    background-color: #f9f9f9;
+    border-radius: 20px; // More rounded like reference (1.75rem ~ 28px)
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+
+    // Hover effect from reference-like quality
+    @media (hover: hover) {
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
+
+  &__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: fluid(20, 32); // Matches reference clamp logic roughly
+    gap: 16px;
+  }
+
+  &__question {
+    @include text-subtitle;
+    color: #000000;
+    line-height: 1.2;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border: 2px solid var(--Main-color, #d28045);
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.3s ease;
+    background-color: transparent;
+
+    // Cross lines
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      background-color: var(--Main-color, #d28045);
+      border-radius: 2px;
+      transition: background-color 0.3s ease;
+    }
+
+    &::before {
+      width: 18px;
+      height: 2px;
+    }
+
+    &::after {
+      width: 2px;
+      height: 18px;
+    }
+  }
+
+  // Animation Body
+  &__body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1); // Exact easing from reference
+  }
+
+  &__content {
+    overflow: hidden;
+  }
+
+  &__text {
+    @include text-regular;
+    color: #000000;
+    padding: 0 fluid(20, 32) fluid(20, 32); // Matches header padding
+  }
+
+  // Active State
+  &__item--active {
+    background-color: #f5f5f5; // Slightly darker
+
+    .faq__icon {
+      background-color: var(--Main-color, #d28045);
+      transform: rotate(45deg); // Rotate wrapper + to X
+
+      &::before,
+      &::after {
+        background-color: #ffffff; // White lines on filled background
+      }
+    }
+
+    .faq__body {
+      grid-template-rows: 1fr;
+    }
+  }
+}

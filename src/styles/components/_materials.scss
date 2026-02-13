@@ -1,0 +1,102 @@
+@use "../functions" as *;
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.materials {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 0; // Removed gap as requested
+    width: 100%;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    // align-items: center; // Removed to allow stretching
+    width: 100%;
+
+    // Mobile/Tablet styles
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      text-align: left;
+    }
+
+    // Modifier for second row
+    &--reverse {
+      @media (max-width: 1024px) {
+        .materials__image-wrapper {
+          order: -1;
+        }
+      }
+    }
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    height: 100%; // Fill grid cell height
+    display: flex;
+    justify-content: center;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%; // Fill wrapper height
+    object-fit: cover;
+    // Aspect ratio from design: 708/283 ~= 2.5
+    aspect-ratio: 2.5;
+
+    // On mobile, aspect ratio might need to change to be more visible or maintain landscape
+    @media (max-width: 768px) {
+      aspect-ratio: 1.5;
+    }
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: fluid(16, 24);
+    min-width: 0; // Prevent flex item overflow
+    padding: fluid(20, 36);
+    justify-content: center;
+
+    @media (max-width: 1024px) {
+      padding: fluid(20, 36) 0;
+    }
+  }
+
+  &__title {
+    @include text-title;
+
+    color: #000;
+  }
+
+  &__text {
+    @include text-regular;
+
+    color: #000;
+    max-width: rem(600);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    list-style: disc; // Show points
+    padding-left: rem(20); // Add padding for points
+    margin: 0;
+  }
+
+  &__item {
+    @include text-regular;
+
+    color: rgba(0, 0, 0, 0.7);
+
+    // Inner span removed in HTML, so no need for &-title
+  }
+}

@@ -1,0 +1,104 @@
+@use "../functions" as *;
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: fluid(16, 24);
+  padding: fluid(12, 18);
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: var(--elements-shadow);
+  height: 100%; // Ensure equal height in grid
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: fluid(12, 16);
+    width: 100%;
+  }
+
+  &__category-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    opacity: 0.5;
+  }
+
+  &__category {
+    @include text-regular-sm-up;
+    color: #000000;
+    text-transform: uppercase; // Assuming uppercase from "СВИТЕРЫ"
+  }
+
+  &__sale-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid #000000;
+
+    @include text-regular-sm;
+    color: #000000;
+  }
+
+  &__title {
+    @include text-subtitle-up;
+    color: #000000;
+    text-transform: uppercase;
+  }
+
+  &__image-wrapper {
+    margin-top: auto;
+    width: 100%;
+    position: relative;
+    aspect-ratio: 0.87; // 424 / 485
+    overflow: hidden;
+    border-radius: 5px; // Optional, to match card radius style if needed
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    object-position: top left;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row; // Changed from flex-start to row to match "gap: 8px" and flex behavior
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .btn {
+    flex: 1;
+    justify-content: center;
+    width: 100%;
+    padding-inline: 0;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    opacity: 0.8;
+    padding-top: 8px; // Little breathing room
+  }
+
+  &__detail {
+    @include text-regular-sm;
+    color: #000000;
+  }
+}

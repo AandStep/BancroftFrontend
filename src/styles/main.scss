@@ -7,6 +7,18 @@
 @use "components/container";
 @use "components/header";
 @use "components/hero";
+@use "components/materials";
+@use "components/product-card";
+@use "components/popular-products";
+@use "components/promo";
+@use "components/categories";
+@use "components/banner";
+@use "components/faq";
+@use "components/request";
+@use "components/notification";
+@use "components/seo-block";
+@use "components/footer";
+@use "components/preloader";
 
 main {
   display: flex;

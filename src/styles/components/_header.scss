@@ -33,15 +33,7 @@
     text-decoration: none;
     white-space: nowrap;
 
-    // Font size: 16px -> 18px (Desktop)
-    font-size: fluid-dt(16, 18);
-
-    @media (max-width: 1024px) {
-      // Font size: 14px -> 16px (Mobile)
-      font-size: fluid-tm(14, 16);
-
-      // Keep visible as per draft, or hide if requested? Assuming visible.
-    }
+    white-space: nowrap;
   }
 
   // Center: Logo
@@ -135,17 +127,7 @@
 
   &__btn-text {
     // 16px -> 18px
-    font-size: fluid-dt(16, 18);
-    // line-height is handled by parent or mixin if needed, but here we override size
-    // However, mixin sets line-height. Let's make sure we rely on mixin as base,
-    // but here in original code it was using var(--regular-line-height) which is in mixin.
-    // Since we applied @include text-regular to parent (.header__btn > .header__btn-text inherits?),
-    // wait. .header__btn only had font-family before. Now it has full mixin.
-    // .header__btn-text had specific font-size and line-height.
-    // Let's apply mixin here too to be safe/explicit or just let it cascade?
-    // BEM says elements are independent.
     @include text-regular;
-    font-size: fluid-dt(16, 18);
     white-space: nowrap;
 
     @media (max-width: 768px) {

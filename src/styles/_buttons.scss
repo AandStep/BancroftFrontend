@@ -51,7 +51,7 @@
 
   // Small Button (Modification)
   &--sm {
-    padding: 1.125rem 2.375rem;
+    @include btn-sm;
     // Same colors as default
   }
 

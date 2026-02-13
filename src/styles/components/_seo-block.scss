@@ -1,0 +1,48 @@
+@use "../functions" as *;
+@use "../mixins" as *;
+
+.seo-block {
+  background-color: #f9f9f9;
+  padding-block: fluid(30, 50, 320, 1920);
+  width: 100%;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: fluid(30, 50, 320, 1920);
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: fluid(30, 50, 320, 1920) fluid(20, 107, 320, 1920);
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: fluid(12, 16, 320, 1920);
+  }
+
+  &__title {
+    @include text-subtitle;
+    font-size: fluid(12, 24, 320, 1920);
+    color: rgba(0, 0, 0, 0.7);
+    margin: 0;
+
+    @media (max-width: 1024px) {
+      font-size: fluid(12, 24, 320, 1920);
+    }
+  }
+
+  &__text {
+    @include text-regular;
+    font-size: fluid(10, 18, 320, 1920);
+    color: rgba(0, 0, 0, 0.7);
+    margin: 0;
+    text-align: justify;
+
+    @media (max-width: 1024px) {
+      font-size: fluid(10, 18, 320, 1920);
+    }
+  }
+}
