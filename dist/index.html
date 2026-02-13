@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bancroft</title>
+
+    <style>
+        .preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .preloader__logo {
+            width: 200px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .preloader__spinner {
+            width: 40px;
+            height: 40px;
+            box-sizing: border-box;
+            border: 3px solid rgba(210, 128, 69, 0.25);
+            /* --Main-color-25 */
+            border-top-color: #d28045;
+            /* --Main-color */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/index-DNEopDZ4.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BpKxTNbd.css">
+</head>
+
+<body>
+    <div class="preloader">
+        <img src="/assets/logo-BGehiLv-.webp" alt="Bancroft" class="preloader__logo" width="200" height="auto">
+        <div class="preloader__spinner"></div>
+    </div>
+    <header class="header">
+        <div class="container">
+            <div class="header__container">
+                <!-- Phone (Left) -->
+                <a href="tel:+71234567899" class="header__phone">+7 (123) 456 78-99</a>
+
+                <!-- Logo (Center) -->
+                <a href="/" class="header__logo-link">
+                    <img src="/assets/logo-BGehiLv-.webp" alt="Bancroft Logo" class="header__logo" />
+                </a>
+
+                <!-- Actions (Right) -->
+                <div class="header__actions">
+                    <button class="header__btn header__btn--search" type="button" aria-label="Поиск по каталогу">
+                        <span class="header__icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
+                                fill="none">
+                                <g opacity="0.6">
+                                    <path
+                                        d="M12.6667 21.3333C10.2444 21.3333 8.19467 20.4942 6.51733 18.816C4.84 17.1378 4.00089 15.088 4 12.6667C3.99911 10.2453 4.83822 8.19556 6.51733 6.51733C8.19645 4.83911 10.2462 4 12.6667 4C15.0871 4 17.1373 4.83911 18.8173 6.51733C20.4973 8.19556 21.336 10.2453 21.3333 12.6667C21.3333 13.6444 21.1778 14.5667 20.8667 15.4333C20.5556 16.3 20.1333 17.0667 19.6 17.7333L27.0667 25.2C27.3111 25.4444 27.4333 25.7556 27.4333 26.1333C27.4333 26.5111 27.3111 26.8222 27.0667 27.0667C26.8222 27.3111 26.5111 27.4333 26.1333 27.4333C25.7556 27.4333 25.4444 27.3111 25.2 27.0667L17.7333 19.6C17.0667 20.1333 16.3 20.5556 15.4333 20.8667C14.5667 21.1778 13.6444 21.3333 12.6667 21.3333ZM12.6667 18.6667C14.3333 18.6667 15.7502 18.0836 16.9173 16.9173C18.0844 15.7511 18.6676 14.3342 18.6667 12.6667C18.6658 10.9991 18.0827 9.58267 16.9173 8.41733C15.752 7.252 14.3351 6.66844 12.6667 6.66667C10.9982 6.66489 9.58178 7.24844 8.41733 8.41733C7.25289 9.58622 6.66933 11.0027 6.66667 12.6667C6.664 14.3307 7.24756 15.7476 8.41733 16.9173C9.58711 18.0871 11.0036 18.6702 12.6667 18.6667Z"
+                                        fill="black" />
+                                </g>
+                            </svg>
+                        </span>
+                        <span class="header__btn-text">Поиск по каталогу</span>
+                    </button>
+
+                    <a href="/cart" class="header__btn header__btn--cart" aria-label="Корзина">
+                        <span class="header__icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"
+                                fill="none">
+                                <g opacity="0.5">
+                                    <path
+                                        d="M9.33326 29.3333C8.59992 29.3333 7.97237 29.0724 7.45059 28.5506C6.92881 28.0288 6.66748 27.4008 6.66659 26.6666C6.6657 25.9324 6.92703 25.3048 7.45059 24.784C7.97415 24.2631 8.6017 24.0017 9.33326 24C10.0648 23.9982 10.6928 24.2595 11.2173 24.784C11.7417 25.3084 12.0026 25.936 11.9999 26.6666C11.9973 27.3973 11.7364 28.0253 11.2173 28.5506C10.6981 29.076 10.0701 29.3368 9.33326 29.3333ZM22.6666 29.3333C21.9333 29.3333 21.3057 29.0724 20.7839 28.5506C20.2621 28.0288 20.0008 27.4008 19.9999 26.6666C19.999 25.9324 20.2604 25.3048 20.7839 24.784C21.3075 24.2631 21.935 24.0017 22.6666 24C23.3981 23.9982 24.0261 24.2595 24.5506 24.784C25.075 25.3084 25.3359 25.936 25.3333 26.6666C25.3306 27.3973 25.0697 28.0253 24.5506 28.5506C24.0315 29.076 23.4035 29.3368 22.6666 29.3333ZM8.19992 7.99996L11.3999 14.6666H20.7333L24.3999 7.99996H8.19992ZM6.93326 5.33329H26.5999C27.111 5.33329 27.4999 5.56129 27.7666 6.01729C28.0333 6.47329 28.0444 6.93418 27.7999 7.39996L23.0666 15.9333C22.8221 16.3777 22.4946 16.7222 22.0839 16.9666C21.6733 17.2111 21.223 17.3333 20.7333 17.3333H10.7999L9.33326 20H23.9999C24.3777 20 24.6946 20.128 24.9506 20.384C25.2066 20.64 25.3341 20.9564 25.3333 21.3333C25.3324 21.7102 25.2044 22.0271 24.9493 22.284C24.6941 22.5408 24.3777 22.6684 23.9999 22.6666H9.33326C8.33326 22.6666 7.5777 22.228 7.06659 21.3506C6.55548 20.4733 6.53326 19.6008 6.99992 18.7333L8.79992 15.4666L3.99992 5.33329H2.66659C2.28881 5.33329 1.97237 5.20529 1.71726 4.94929C1.46215 4.69329 1.33415 4.37685 1.33326 3.99996C1.33237 3.62307 1.46037 3.30663 1.71726 3.05063C1.97415 2.79463 2.29059 2.66663 2.66659 2.66663H4.83326C5.0777 2.66663 5.31103 2.73329 5.53326 2.86663C5.75548 2.99996 5.92215 3.18885 6.03326 3.43329L6.93326 5.33329Z"
+                                        fill="black" />
+                                </g>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero__container">
+                <div class="hero__wrapper">
+                    <!-- Top Group: Navbar + Breadcrumbs -->
+                    <div class="hero__category-group">
+                        <nav class="hero__navbar">
+                            <a href="#" class="hero__nav-link">СВИТЕРЫ</a>
+                            <a href="#" class="hero__nav-link">БРЮКИ</a>
+                            <a href="#" class="hero__nav-link">РУБАШКИ</a>
+                            <a href="#" class="hero__nav-link">ПИДЖАКИ</a>
+                            <a href="#" class="hero__nav-link">ОБУВЬ</a>
+                        </nav>
+
+                        <div class="hero__breadcrumbs">
+                            <a href="#" class="hero__crumb">Каталог</a>
+                            <span class="hero__crumb-separator"></span>
+                            <a href="#" class="hero__crumb">Главная</a>
+                        </div>
+                    </div>
+
+                    <!-- Hero Banner -->
+                    <div class="hero__banner">
+                        <div class="hero__banner-content">
+                            <div class="hero__text-group">
+                                <h1 class="hero__title">Мужская одежда в стиле Old Money</h1>
+                                <p class="hero__description">Премиальный трикотаж и классика</p>
+                            </div>
+                            <div class="hero__cta-wrapper">
+                                <a href="#" class="hero__cta btn">Перейти в каталог</a>
+                            </div>
+                        </div>
+                        <img src="/assets/hero-img-BKXEDeEb.webp" alt="Мужская одежда в стиле Old Money" class="hero__image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="materials">
+            <div class="container materials__container">
+                <div class="materials__row">
+                    <div class="materials__image-wrapper">
+                        <img src="/assets/mat-1--3U6jxgo.webp" alt="Бескомпромиссное качество материалов" class="materials__img"
+                            loading="lazy">
+                    </div>
+                    <div class="materials__content">
+                        <h2 class="materials__title">Бескомпромиссное качество материалов</h2>
+                        <p class="materials__text">
+                            Истинный Old Money стиль начинается с прикосновения. Для коллекций Bancroft &amp; Co мы
+                            отбираем только премиальные натуральные волокна.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="materials__row materials__row--reverse">
+                    <div class="materials__content">
+                        <ul class="materials__list">
+                            <li class="materials__item">
+                                Мериносовая шерсть Extra Fine:
+                                Сохраняет тепло, но позволяет телу дышать. Мягкая, как кашемир, и прочная, как
+                                характер
+                                джентльмена.
+                            </li>
+                            <li class="materials__item">
+                                Органический хлопок:
+                                Плотный, формоустойчивый материал с благородной матовой фактурой.
+                            </li>
+                            <li class="materials__item">
+                                Фурнитура:
+                                Каждая пуговица и молния подобраны так, чтобы служить годами, не теряя блеска.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="materials__image-wrapper">
+                        <img src="/assets/mat-2-CTchdiZN.webp" alt="Детали материалов" class="materials__img" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="popular-products">
+            <div class="container popular-products__container">
+                <h2 class="popular-products__title">Популярные товары</h2>
+                <div class="popular-products__grid">
+                    <!-- Product 1 -->
+                    <article class="product-card">
+                        <div class="product-card__header">
+                            <div class="product-card__category-row">
+                                <span class="product-card__category">СВИТЕРЫ</span>
+                                <div class="product-card__sale-badge">Распродажа</div>
+                            </div>
+                            <h3 class="product-card__title">БЕЖЕВЫЙ СВИТЕР BANCROFT</h3>
+                        </div>
+                        <div class="product-card__image-wrapper">
+                            <img src="/assets/sweater-beige-B1fFmNbH.webp" alt="Бежевый свитер Bancroft"
+                                class="product-card__image" loading="lazy">
+                        </div>
+                        <div class="product-card__actions">
+                            <button class="btn btn--sm" type="button">Купить</button>
+                            <button class="btn btn--alt btn--sm" type="button">В
+                                корзину</button>
+                        </div>
+                        <div class="product-card__footer">
+                            <span class="product-card__detail">100% хлопок</span>
+                            <span class="product-card__detail">3.499 р.</span>
+                        </div>
+                    </article>
+
+                    <!-- Product 2 -->
+                    <article class="product-card">
+                        <div class="product-card__header">
+                            <div class="product-card__category-row">
+                                <span class="product-card__category">БРЮКИ</span>
+                                <div class="product-card__sale-badge">Распродажа</div>
+                            </div>
+                            <h3 class="product-card__title">БЕЖЕВЫЕ БРЮКИ BANCROFT</h3>
+                        </div>
+                        <div class="product-card__image-wrapper">
+                            <img src="/assets/trousers-beige-DouwkE4m.webp" alt="Бежевые брюки Bancroft"
+                                class="product-card__image" loading="lazy">
+                        </div>
+                        <div class="product-card__actions">
+                            <button class="btn btn--sm" type="button">Купить</button>
+                            <button class="btn btn--alt btn--sm" type="button">В
+                                корзину</button>
+                        </div>
+                        <div class="product-card__footer">
+                            <span class="product-card__detail">80% хлопок, 20% полиэстер</span>
+                            <span class="product-card__detail">5.499 р.</span>
+                        </div>
+                    </article>
+
+                    <!-- Product 3 -->
+                    <article class="product-card">
+                        <div class="product-card__header">
+                            <div class="product-card__category-row">
+                                <span class="product-card__category">СВИТЕРЫ</span>
+                                <div class="product-card__sale-badge">Распродажа</div>
+                            </div>
+                            <h3 class="product-card__title">КОРИЧНЕВЫЙ СВИТЕР BANCROFT</h3>
+                        </div>
+                        <div class="product-card__image-wrapper">
+                            <img src="/assets/sweater-brown-BeemKlJR.webp" alt="Коричневый свитер Bancroft"
+                                class="product-card__image" loading="lazy">
+                        </div>
+                        <div class="product-card__actions">
+                            <button class="btn btn--sm" type="button">Купить</button>
+                            <button class="btn btn--alt btn--sm" type="button">В
+                                корзину</button>
+                        </div>
+                        <div class="product-card__footer">
+                            <span class="product-card__detail">100% хлопок</span>
+                            <span class="product-card__detail">3.499 р.</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="promo">
+            <div class="container promo__container">
+                <div class="promo__slider swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide promo__slide" style="background-image: url('/assets/show-1-B-LWLEO3.webp');">
+                            <div class="promo__content">
+                                <h2 class="promo__title">БЕЖЕВЫЙ СВИТЕР</h2>
+                                <div class="promo__actions">
+                                    <div class="promo__navigation">
+                                        <button class="promo__nav-btn promo__nav-btn--prev"
+                                            aria-label="Предыдущий слайд">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                                                viewBox="0 0 48 48" fill="none">
+                                                <g opacity="0.5">
+                                                    <path
+                                                        d="M29.3 24.7C29.5 24.5 29.6 24.2667 29.6 24C29.6 23.7333 29.5 23.5 29.3 23.3L23.7 17.7C23.3667 17.3667 23 17.2833 22.6 17.45C22.2 17.6167 22 17.9333 22 18.4L22 29.6C22 30.0667 22.2 30.3833 22.6 30.55C23 30.7167 23.3667 30.6333 23.7 30.3L29.3 24.7ZM44 24C44 26.7667 43.4747 29.3667 42.424 31.8C41.3733 34.2333 39.9487 36.35 38.15 38.15C36.3513 39.95 34.2347 41.3747 31.8 42.424C29.3653 43.4733 26.7653 43.9987 24 44C21.2347 44.0013 18.6347 43.476 16.2 42.424C13.7653 41.372 11.6487 39.9473 9.85 38.15C8.05133 36.3527 6.62667 34.236 5.576 31.8C4.52533 29.364 4 26.764 4 24C4 21.236 4.52533 18.636 5.576 16.2C6.62667 13.764 8.05133 11.6473 9.85 9.85C11.6487 8.05267 13.7653 6.62733 16.2 5.574C18.6347 4.52067 21.2347 3.996 24 4C26.7653 4.004 29.3653 4.52933 31.8 5.576C34.2347 6.62267 36.3513 8.04733 38.15 9.85C39.9487 11.6527 41.374 13.7693 42.426 16.2C43.478 18.6307 44.0027 21.2307 44 24Z"
+                                                        fill="black" />
+                                                </g>
+                                            </svg>
+                                        </button>
+                                        <button class="promo__nav-btn promo__nav-btn--next"
+                                            aria-label="Следующий слайд">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                                                viewBox="0 0 48 48" fill="none">
+                                                <g opacity="0.5">
+                                                    <path
+                                                        d="M29.3 24.7C29.5 24.5 29.6 24.2667 29.6 24C29.6 23.7333 29.5 23.5 29.3 23.3L23.7 17.7C23.3667 17.3667 23 17.2833 22.6 17.45C22.2 17.6167 22 17.9333 22 18.4L22 29.6C22 30.0667 22.2 30.3833 22.6 30.55C23 30.7167 23.3667 30.6333 23.7 30.3L29.3 24.7ZM44 24C44 26.7667 43.4747 29.3667 42.424 31.8C41.3733 34.2333 39.9487 36.35 38.15 38.15C36.3513 39.95 34.2347 41.3747 31.8 42.424C29.3653 43.4733 26.7653 43.9987 24 44C21.2347 44.0013 18.6347 43.476 16.2 42.424C13.7653 41.372 11.6487 39.9473 9.85 38.15C8.05133 36.3527 6.62667 34.236 5.576 31.8C4.52533 29.364 4 26.764 4 24C4 21.236 4.52533 18.636 5.576 16.2C6.62667 13.764 8.05133 11.6473 9.85 9.85C11.6487 8.05267 13.7653 6.62733 16.2 5.574C18.6347 4.52067 21.2347 3.996 24 4C26.7653 4.004 29.3653 4.52933 31.8 5.576C34.2347 6.62267 36.3513 8.04733 38.15 9.85C39.9487 11.6527 41.374 13.7693 42.426 16.2C43.478 18.6307 44.0027 21.2307 44 24Z"
+                                                        fill="black" />
+                                                </g>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <a href="#" class="btn">Перейти к товару</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide promo__slide" style="background-image: url('/assets/show-2-AlJ9Cb9e.webp');">
+                            <div class="promo__content">
+                                <h2 class="promo__title">Бежевая поло</h2>
+                                <div class="promo__actions">
+                                    <div class="promo__navigation">
+                                        <button class="promo__nav-btn promo__nav-btn--prev"
+                                            aria-label="Предыдущий слайд">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                                                viewBox="0 0 48 48" fill="none">
+                                                <g opacity="0.5">
+                                                    <path
+                                                        d="M29.3 24.7C29.5 24.5 29.6 24.2667 29.6 24C29.6 23.7333 29.5 23.5 29.3 23.3L23.7 17.7C23.3667 17.3667 23 17.2833 22.6 17.45C22.2 17.6167 22 17.9333 22 18.4L22 29.6C22 30.0667 22.2 30.3833 22.6 30.55C23 30.7167 23.3667 30.6333 23.7 30.3L29.3 24.7ZM44 24C44 26.7667 43.4747 29.3667 42.424 31.8C41.3733 34.2333 39.9487 36.35 38.15 38.15C36.3513 39.95 34.2347 41.3747 31.8 42.424C29.3653 43.4733 26.7653 43.9987 24 44C21.2347 44.0013 18.6347 43.476 16.2 42.424C13.7653 41.372 11.6487 39.9473 9.85 38.15C8.05133 36.3527 6.62667 34.236 5.576 31.8C4.52533 29.364 4 26.764 4 24C4 21.236 4.52533 18.636 5.576 16.2C6.62667 13.764 8.05133 11.6473 9.85 9.85C11.6487 8.05267 13.7653 6.62733 16.2 5.574C18.6347 4.52067 21.2347 3.996 24 4C26.7653 4.004 29.3653 4.52933 31.8 5.576C34.2347 6.62267 36.3513 8.04733 38.15 9.85C39.9487 11.6527 41.374 13.7693 42.426 16.2C43.478 18.6307 44.0027 21.2307 44 24Z"
+                                                        fill="black" />
+                                                </g>
+                                            </svg>
+                                        </button>
+                                        <button class="promo__nav-btn promo__nav-btn--next"
+                                            aria-label="Следующий слайд">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                                                viewBox="0 0 48 48" fill="none">
+                                                <g opacity="0.5">
+                                                    <path
+                                                        d="M29.3 24.7C29.5 24.5 29.6 24.2667 29.6 24C29.6 23.7333 29.5 23.5 29.3 23.3L23.7 17.7C23.3667 17.3667 23 17.2833 22.6 17.45C22.2 17.6167 22 17.9333 22 18.4L22 29.6C22 30.0667 22.2 30.3833 22.6 30.55C23 30.7167 23.3667 30.6333 23.7 30.3L29.3 24.7ZM44 24C44 26.7667 43.4747 29.3667 42.424 31.8C41.3733 34.2333 39.9487 36.35 38.15 38.15C36.3513 39.95 34.2347 41.3747 31.8 42.424C29.3653 43.4733 26.7653 43.9987 24 44C21.2347 44.0013 18.6347 43.476 16.2 42.424C13.7653 41.372 11.6487 39.9473 9.85 38.15C8.05133 36.3527 6.62667 34.236 5.576 31.8C4.52533 29.364 4 26.764 4 24C4 21.236 4.52533 18.636 5.576 16.2C6.62667 13.764 8.05133 11.6473 9.85 9.85C11.6487 8.05267 13.7653 6.62733 16.2 5.574C18.6347 4.52067 21.2347 3.996 24 4C26.7653 4.004 29.3653 4.52933 31.8 5.576C34.2347 6.62267 36.3513 8.04733 38.15 9.85C39.9487 11.6527 41.374 13.7693 42.426 16.2C43.478 18.6307 44.0027 21.2307 44 24Z"
+                                                        fill="black" />
+                                                </g>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <a href="#" class="btn">Перейти к товару</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="swiper-slide promo__slide" style="background-image: url('/assets/show-3-uwT2O6B1.webp');">
+                            <div class="promo__content">
+                                <h2 class="promo__title">Пиджак Bancroft</h2>
+                                <div class="promo__actions">
+                                    <div class="promo__navigation">
+                                        <button class="promo__nav-btn promo__nav-btn--prev"
+                                            aria-label="Предыдущий слайд">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                                                viewBox="0 0 48 48" fill="none">
+                                                <g opacity="0.5">
+                                                    <path
+                                                        d="M29.3 24.7C29.5 24.5 29.6 24.2667 29.6 24C29.6 23.7333 29.5 23.5 29.3 23.3L23.7 17.7C23.3667 17.3667 23 17.2833 22.6 17.45C22.2 17.6167 22 17.9333 22 18.4L22 29.6C22 30.0667 22.2 30.3833 22.6 30.55C23 30.7167 23.3667 30.6333 23.7 30.3L29.3 24.7ZM44 24C44 26.7667 43.4747 29.3667 42.424 31.8C41.3733 34.2333 39.9487 36.35 38.15 38.15C36.3513 39.95 34.2347 41.3747 31.8 42.424C29.3653 43.4733 26.7653 43.9987 24 44C21.2347 44.0013 18.6347 43.476 16.2 42.424C13.7653 41.372 11.6487 39.9473 9.85 38.15C8.05133 36.3527 6.62667 34.236 5.576 31.8C4.52533 29.364 4 26.764 4 24C4 21.236 4.52533 18.636 5.576 16.2C6.62667 13.764 8.05133 11.6473 9.85 9.85C11.6487 8.05267 13.7653 6.62733 16.2 5.574C18.6347 4.52067 21.2347 3.996 24 4C26.7653 4.004 29.3653 4.52933 31.8 5.576C34.2347 6.62267 36.3513 8.04733 38.15 9.85C39.9487 11.6527 41.374 13.7693 42.426 16.2C43.478 18.6307 44.0027 21.2307 44 24Z"
+                                                        fill="black" />
+                                                </g>
+                                            </svg>
+                                        </button>
+                                        <button class="promo__nav-btn promo__nav-btn--next"
+                                            aria-label="Следующий слайд">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                                                viewBox="0 0 48 48" fill="none">
+                                                <g opacity="0.5">
+                                                    <path
+                                                        d="M29.3 24.7C29.5 24.5 29.6 24.2667 29.6 24C29.6 23.7333 29.5 23.5 29.3 23.3L23.7 17.7C23.3667 17.3667 23 17.2833 22.6 17.45C22.2 17.6167 22 17.9333 22 18.4L22 29.6C22 30.0667 22.2 30.3833 22.6 30.55C23 30.7167 23.3667 30.6333 23.7 30.3L29.3 24.7ZM44 24C44 26.7667 43.4747 29.3667 42.424 31.8C41.3733 34.2333 39.9487 36.35 38.15 38.15C36.3513 39.95 34.2347 41.3747 31.8 42.424C29.3653 43.4733 26.7653 43.9987 24 44C21.2347 44.0013 18.6347 43.476 16.2 42.424C13.7653 41.372 11.6487 39.9473 9.85 38.15C8.05133 36.3527 6.62667 34.236 5.576 31.8C4.52533 29.364 4 26.764 4 24C4 21.236 4.52533 18.636 5.576 16.2C6.62667 13.764 8.05133 11.6473 9.85 9.85C11.6487 8.05267 13.7653 6.62733 16.2 5.574C18.6347 4.52067 21.2347 3.996 24 4C26.7653 4.004 29.3653 4.52933 31.8 5.576C34.2347 6.62267 36.3513 8.04733 38.15 9.85C39.9487 11.6527 41.374 13.7693 42.426 16.2C43.478 18.6307 44.0027 21.2307 44 24Z"
+                                                        fill="black" />
+                                                </g>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <a href="#" class="btn">Перейти к товару</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 4 -->
+                        <div class="swiper-slide promo__slide" style="background-image: url('/assets/show-4-Bj5FSIj9.webp');">
+                            <div class="promo__content">
+                                <h2 class="promo__title">Коричневый свитер</h2>
+                                <div class="promo__actions">
+                                    <div class="promo__navigation">
+                                        <button class="promo__nav-btn promo__nav-btn--prev"
+                                            aria-label="Предыдущий слайд">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                                                viewBox="0 0 48 48" fill="none">
+                                                <g opacity="0.5">
+                                                    <path
+                                                        d="M29.3 24.7C29.5 24.5 29.6 24.2667 29.6 24C29.6 23.7333 29.5 23.5 29.3 23.3L23.7 17.7C23.3667 17.3667 23 17.2833 22.6 17.45C22.2 17.6167 22 17.9333 22 18.4L22 29.6C22 30.0667 22.2 30.3833 22.6 30.55C23 30.7167 23.3667 30.6333 23.7 30.3L29.3 24.7ZM44 24C44 26.7667 43.4747 29.3667 42.424 31.8C41.3733 34.2333 39.9487 36.35 38.15 38.15C36.3513 39.95 34.2347 41.3747 31.8 42.424C29.3653 43.4733 26.7653 43.9987 24 44C21.2347 44.0013 18.6347 43.476 16.2 42.424C13.7653 41.372 11.6487 39.9473 9.85 38.15C8.05133 36.3527 6.62667 34.236 5.576 31.8C4.52533 29.364 4 26.764 4 24C4 21.236 4.52533 18.636 5.576 16.2C6.62667 13.764 8.05133 11.6473 9.85 9.85C11.6487 8.05267 13.7653 6.62733 16.2 5.574C18.6347 4.52067 21.2347 3.996 24 4C26.7653 4.004 29.3653 4.52933 31.8 5.576C34.2347 6.62267 36.3513 8.04733 38.15 9.85C39.9487 11.6527 41.374 13.7693 42.426 16.2C43.478 18.6307 44.0027 21.2307 44 24Z"
+                                                        fill="black" />
+                                                </g>
+                                            </svg>
+                                        </button>
+                                        <button class="promo__nav-btn promo__nav-btn--next"
+                                            aria-label="Следующий слайд">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                                                viewBox="0 0 48 48" fill="none">
+                                                <g opacity="0.5">
+                                                    <path
+                                                        d="M29.3 24.7C29.5 24.5 29.6 24.2667 29.6 24C29.6 23.7333 29.5 23.5 29.3 23.3L23.7 17.7C23.3667 17.3667 23 17.2833 22.6 17.45C22.2 17.6167 22 17.9333 22 18.4L22 29.6C22 30.0667 22.2 30.3833 22.6 30.55C23 30.7167 23.3667 30.6333 23.7 30.3L29.3 24.7ZM44 24C44 26.7667 43.4747 29.3667 42.424 31.8C41.3733 34.2333 39.9487 36.35 38.15 38.15C36.3513 39.95 34.2347 41.3747 31.8 42.424C29.3653 43.4733 26.7653 43.9987 24 44C21.2347 44.0013 18.6347 43.476 16.2 42.424C13.7653 41.372 11.6487 39.9473 9.85 38.15C8.05133 36.3527 6.62667 34.236 5.576 31.8C4.52533 29.364 4 26.764 4 24C4 21.236 4.52533 18.636 5.576 16.2C6.62667 13.764 8.05133 11.6473 9.85 9.85C11.6487 8.05267 13.7653 6.62733 16.2 5.574C18.6347 4.52067 21.2347 3.996 24 4C26.7653 4.004 29.3653 4.52933 31.8 5.576C34.2347 6.62267 36.3513 8.04733 38.15 9.85C39.9487 11.6527 41.374 13.7693 42.426 16.2C43.478 18.6307 44.0027 21.2307 44 24Z"
+                                                        fill="black" />
+                                                </g>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                    <a href="#" class="btn">Перейти к товару</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="banner">
+            <div class="container banner__container">
+                <div class="banner__content">
+                    <div class="banner__text-group">
+                        <h2 class="banner__title">КЛАССИЧЕСКАЯ <br>КОЛЛЕКЦИЯ</h2>
+                        <div class="banner__badge">
+                            <span class="banner__badge-text">Новинка</span>
+                        </div>
+                    </div>
+                    <a href="#" class="banner__btn">Перейти в каталог</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="categories">
+            <div class="container categories__container">
+                <h2 class="categories__title">Категории товаров</h2>
+                <div class="categories__grid">
+                    <!-- Item 1: Jackets -->
+                    <a href="#" class="categories__item">
+                        <img src="/assets/blazer-classic-BQa9r302.webp" alt="Пиджаки" class="categories__image" loading="lazy">
+                        <div class="categories__overlay"></div>
+                        <span class="categories__name">ПИДЖАКИ</span>
+                    </a>
+
+                    <!-- Item 2: Sweaters -->
+                    <a href="#" class="categories__item">
+                        <img src="/assets/sweater-brown-BeemKlJR.webp" alt="Свитеры" class="categories__image" loading="lazy">
+                        <div class="categories__overlay"></div>
+                        <span class="categories__name">СВИТЕРЫ</span>
+                    </a>
+
+                    <!-- Item 3: Sub-grid (Group) -->
+                    <div class="categories__sub-grid">
+                        <div class="categories__row">
+                            <!-- Pants -->
+                            <a href="#" class="categories__sub-item">
+                                <img src="/assets/trousers-black-B8QyH2cs.webp" alt="Брюки" class="categories__image"
+                                    loading="lazy">
+                                <div class="categories__overlay"></div>
+                                <span class="categories__name">БРЮКИ</span>
+                            </a>
+                            <!-- Shoes -->
+                            <a href="#" class="categories__sub-item">
+                                <img src="/assets/shoes-classic-ViSB_K-s.webp" alt="Обувь" class="categories__image"
+                                    loading="lazy">
+                                <div class="categories__overlay"></div>
+                                <span class="categories__name">ОБУВЬ</span>
+                            </a>
+                        </div>
+                        <!-- Shirts -->
+                        <a href="#" class="categories__sub-item">
+                            <img src="/assets/polo-beige-DYKFzCBL.webp" alt="Рубашки" class="categories__image" loading="lazy">
+                            <div class="categories__overlay"></div>
+                            <span class="categories__name">РУБАШКИ</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="faq">
+            <div class="container faq__container">
+                <h2 class="faq__title">Частые вопросы</h2>
+                <div class="faq__list">
+                    <div class="faq__item">
+                        <button class="faq__header" type="button">
+                            <span class="faq__question">Сколько стоит и сколько занимает доставка?</span>
+                            <div class="faq__icon"></div>
+                        </button>
+                        <div class="faq__body">
+                            <div class="faq__content">
+                                <div class="faq__text">
+                                    Стоимость и сроки зависят от вашего региона. Мы предлагаем несколько
+                                    вариантов:<br /><br />Курьерская
+                                    доставка до двери: от 2 до 5 рабочих дней.<br />Пункты выдачи заказов (ПВЗ): от 3 до
+                                    7
+                                    рабочих
+                                    дней.<br />Почта:
+                                    сроки зависят от работы почтового оператора.<br />Бесплатная доставка действует при
+                                    заказе
+                                    от 5.999
+                                    рублей.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <button class="faq__header" type="button">
+                            <span class="faq__question">Как правильно выбрать размер?</span>
+                            <div class="faq__icon"></div>
+                        </button>
+                        <div class="faq__body">
+                            <div class="faq__content">
+                                <div class="faq__text">
+                                    На странице каждого товара есть кнопка «Таблица размеров». Мы рекомендуем
+                                    ориентироваться на
+                                    нее, а
+                                    не на
+                                    размеры других брендов. Если вы сомневаетесь, измерьте свои параметры (обхват груди,
+                                    талии и
+                                    бедер)
+                                    и
+                                    напишите нам в чат — мы поможем подобрать идеальный вариант.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <button class="faq__header" type="button">
+                            <span class="faq__question">Что делать, если вещь не подошла?</span>
+                            <div class="faq__icon"></div>
+                        </button>
+                        <div class="faq__body">
+                            <div class="faq__content">
+                                <div class="faq__text">
+                                    Вы можете вернуть или обменять товар в течение 14 дней (или другой срок согласно
+                                    вашим
+                                    правилам) с
+                                    момента
+                                    получения. Главное условие — вещь не должна быть в употреблении, должны быть
+                                    сохранены
+                                    бирки, ярлыки
+                                    и
+                                    упаковка.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <button class="faq__header" type="button">
+                            <span class="faq__question">Где шьется ваша одежда?</span>
+                            <div class="faq__icon"></div>
+                        </button>
+                        <div class="faq__body">
+                            <div class="faq__content">
+                                <div class="faq__text">
+                                    Мы работаем с фабриками в Беларуси и России и тщательно контролируем качество на
+                                    всех
+                                    этапах
+                                    производства.
+                                    Используем только сертифицированные ткани.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="request" id="request">
+            <div class="container request__container">
+                <div class="request__wrapper">
+                    <div class="request__header">
+                        <h2 class="request__title">ПОДПИШИТЕСЬ НА НОВОСТИ BANCROFT &amp; CO</h2>
+                        <p class="request__subtitle">Доступ к закрытым распродажам и новинкам только для членов клуба
+                        </p>
+                    </div>
+                    <form class="request__form">
+                        <div class="request__group">
+                            <label class="request__label">
+                                <span class="request__label-text">Ваше имя <span
+                                        class="request__asterisk">*</span></span>
+                                <input class="request__input" type="text" name="name" placeholder="Имя">
+                            </label>
+                        </div>
+                        <div class="request__group">
+                            <label class="request__label">
+                                <span class="request__label-text">Почта <span class="request__asterisk">*</span></span>
+                                <input class="request__input" type="email" name="email" placeholder="example@gmail.com">
+                            </label>
+                        </div>
+                        <div class="request__checkbox-wrapper">
+                            <label class="request__checkbox-label">
+                                <input type="checkbox" class="request__checkbox" name="agreement">
+                                <span class="request__custom-checkbox"></span>
+                                <span class="request__agreement-text">Я ознакомлен (-на) с политикой конфиденциальности
+                                    и даю согласие на обработку персональных данных</span>
+                            </label>
+                        </div>
+                        <button class="request__btn btn" type="submit">Подписаться</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="seo-block">
+            <div class="container seo-block__container">
+                <div class="seo-block__item">
+                    <h3 class="seo-block__title">Мужская одежда в стиле Old Money: Эстетика «тихой роскоши» от Bancroft
+                        &amp; Co</h3>
+                    <p class="seo-block__text">
+                        Добро пожаловать в интернет-магазин Bancroft &amp; Co — пространство, где классические традиции
+                        встречаются с современным комфортом. Мы создаем мужскую одежду в эстетике Old Money («старых
+                        денег»),
+                        которая не гонится за мимолетными трендами, а олицетворяет статус, сдержанность и безупречный
+                        вкус.
+                    </p>
+                </div>
+                <div class="seo-block__item">
+                    <h3 class="seo-block__title">Доставка и сервис</h3>
+                    <p class="seo-block__text">
+                        Вы можете купить мужскую одежду в стиле Old Money с доставкой по всей стране. Мы позаботились о
+                        том,
+                        чтобы процесс выбора был простым, а получение заказа — удобным. Ознакомьтесь с нашей таблицей
+                        размеров,
+                        выберите свой идеальный образ и присоединяйтесь к клубу ценителей вечной классики.
+                    </p>
+                </div>
+                <div class="seo-block__item">
+                    <h3 class="seo-block__title">Премиальный трикотаж и база для гардероба</h3>
+                    <p class="seo-block__text">
+                        В нашем каталоге вы найдете основу гардероба современного джентльмена. Мы специализируемся на
+                        вещах,
+                        которые остаются актуальными годами:<br>
+                        - Вязаные свитеры и кардиганы: Уютная классика крупной и мелкой вязки для прохладных
+                        вечеров.<br>
+                        - Мужские поло и джемперы: Универсальные модели, уместные как в офисе, так и в загородном
+                        клубе.<br>
+                        - Классические брюки: Идеальная посадка и строгие линии для завершения образа.
+                    </p>
+                </div>
+                <div class="seo-block__item">
+                    <h3 class="seo-block__title">Философия качества и натуральные материалы</h3>
+                    <p class="seo-block__text">
+                        Стиль «тихая роскошь» невозможен без тактильного комфорта. Для пошива коллекций Bancroft &amp;
+                        Co
+                        используются только натуральные материалы высокого качества: благородная шерсть, мягкий хлопок и
+                        дышащий
+                        лен. Мы уделяем особое внимание деталям — от прочности швов до фактуры ткани. Покупая одежду у
+                        нас, вы
+                        инвестируете в свой имидж.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__container">
+            <div class="footer__body">
+                <div class="footer__main">
+                    <img src="/assets/logo-txt-BV9fxabG.webp" alt="Bancroft Logo" class="footer__logo" loading="lazy">
+
+                    <div class="footer__nav">
+                        <!-- Contact Info Group -->
+                        <div class="footer__column">
+                            <span class="footer__category">Bancroft & CO</span>
+                            <address class="footer__address">Санкт-Петербург,&nbsp;&nbsp;ул. Кольцевая, 5</address>
+                            <a href="tel:+71932461346" class="footer__link">+7 (193) 246 13-46</a>
+                            <a href="mailto:cloth.mag@gmail.com" class="footer__link">Bancroft.CO@gmail.com</a>
+                        </div>
+
+                        <!-- Links Groups Wrapper -->
+                        <div class="footer__columns-wrapper">
+                            <div class="footer__column">
+                                <a href="#" class="footer__link">Каталог</a>
+                                <a href="#" class="footer__link">Материалы</a>
+                                <a href="#" class="footer__link">Фотосессия</a>
+                            </div>
+                            <div class="footer__column">
+                                <a href="#" class="footer__link">FAQ</a>
+                                <a href="#request" class="footer__link">Оставить заявку</a>
+                                <a href="#" class="footer__link">О компании</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer__bottom">
+                    <span class="footer__copyright">copyright by Bancroft & CO @2020-2025</span>
+                    <div class="footer__produced">
+                        <span>produced by</span>
+                        <a href="https://result-point.ru/" target="_blank" class="footer__produced-link">
+                            <img src="/assets/result-logo-BPR3JnhN.svg" alt="Result Point Logo" class="footer__produced-logo">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
